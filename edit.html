@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Assets</title>
+    <script type="module" src="/src/edit.js"></script>
+  </head>
+  <body>
+    <div>
+      <h1>Edit Mode</h1>
+      <label for="cardUrl">Card Image URL:</label>
+      <input
+        type="text"
+        id="cardUrl"
+        value="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png"
+      />
+      <br />
+      <label for="modelUrl">Model URL:</label>
+      <input
+        type="text"
+        id="modelUrl"
+        value="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/softmind/scene.gltf"
+      />
+      <br />
+      <button id="saveChanges">Save Changes</button>
+    </div>
+    <button id="switchPage">Switch to Tracking Mode</button>
+  </body>
+</html>
