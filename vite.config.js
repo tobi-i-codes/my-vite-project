@@ -3,14 +3,6 @@ import fs from "fs";
 import path from "path";
 
 export default defineConfig({
-  build: {
-    rollupOptions: {
-      input: {
-        main: "index.html",
-        edit: "edit.html",
-      },
-    },
-  },
   server: {
     https: {
       key: fs.readFileSync(path.resolve(__dirname, "localhost-key.pem")),
