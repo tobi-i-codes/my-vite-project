@@ -9,30 +9,30 @@
     </script>
     <script></script>
     <script>
-      AFRAME.registerComponent("mytarget", {
-        init: function () {
-          const backgroundMusic = document.querySelector("#music");
+      // AFRAME.registerComponent("mytarget", {
+      //   init: function () {
+      //     const backgroundMusic = document.querySelector("#music");
 
-          this.el.addEventListener("targetFound", (event) => {
-            console.log("target found");
-            backgroundMusic.components.sound.playSound();
-            showAvatar(() => {
-              setTimeout(() => {
-                showPortfolio(() => {
-                  setTimeout(() => {
-                    showInfo();
-                  }, 300);
-                });
-              }, 300);
-            });
-          });
+      //     this.el.addEventListener("targetFound", (event) => {
+      //       console.log("target found");
+      //       backgroundMusic.components.sound.playSound();
+      //       showAvatar(() => {
+      //         setTimeout(() => {
+      //           showPortfolio(() => {
+      //             setTimeout(() => {
+      //               showInfo();
+      //             }, 300);
+      //           });
+      //         }, 300);
+      //       });
+      //     });
 
-          this.el.addEventListener("targetLost", (event) => {
-            console.log("target lost");
-            backgroundMusic.components.sound.stopSound();
-          });
-        },
-      });
+      //     this.el.addEventListener("targetLost", (event) => {
+      //       console.log("target lost");
+      //       backgroundMusic.components.sound.stopSound();
+      //     });
+      //   },
+      // });
       const showInfo = () => {
         let y = 0;
         const profileButton = document.querySelector("#profile-button");
