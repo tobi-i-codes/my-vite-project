@@ -34,12 +34,10 @@
       //   },
       // });
       const showInfo = () => {
-        let y = 0;
         const profileButton = document.querySelector("#profile-button");
         const webButton = document.querySelector("#web-button");
         const emailButton = document.querySelector("#email-button");
         const locationButton = document.querySelector("#location-button");
-        const text = document.querySelector("#text");
 
         profileButton.setAttribute("visible", true);
         setTimeout(() => {
@@ -52,29 +50,18 @@
           locationButton.setAttribute("visible", true);
         }, 900);
 
-        let currentTab = "";
-        webButton.addEventListener("click", function (evt) {
-          text.setAttribute("value", "https://softmind.tech");
-          currentTab = "web";
+        // Load actions immediately after revealing the buttons
+        webButton.addEventListener("click", function () {
+          window.location.href = "https://softmind.tech";
         });
-        emailButton.addEventListener("click", function (evt) {
-          text.setAttribute("value", "hello@softmind.tech");
-          currentTab = "email";
+        emailButton.addEventListener("click", function () {
+          window.location.href = "mailto:hello@softmind.tech";
         });
-        profileButton.addEventListener("click", function (evt) {
-          text.setAttribute("value", "AR");
-          currentTab = "profile";
+        profileButton.addEventListener("click", function () {
+          console.log("Profile selected");
         });
-        locationButton.addEventListener("click", function (evt) {
-          console.log("loc");
-          text.setAttribute("value", "Vancouver");
-          currentTab = "location";
-        });
-
-        text.addEventListener("click", function (evt) {
-          if (currentTab === "web") {
-            window.location.href = "https://softmind.tech";
-          }
+        locationButton.addEventListener("click", function () {
+          console.log("Location: Vancouver");
         });
       };
 
@@ -146,15 +133,8 @@
 
       const showAvatar = (onDone) => {
         const avatar = document.querySelector("#avatar");
-        let z = -0.3;
-        const id = setInterval(() => {
-          z += 0.008;
-          if (z >= 0.3) {
-            clearInterval(id);
-            onDone();
-          }
-          avatar.setAttribute("position", "0 -0.25 " + z);
-        }, 10);
+        avatar.setAttribute("position", "0 -0.25 0.3"); // Directly set the final position
+        onDone(); // Immediately call the callback function
       };
 
       AFRAME.registerComponent("mytarget", {
@@ -459,7 +439,7 @@
             animation-mixer
           ></a-gltf-model>
 
-          <a-text
+          <!-- <a-text
             id="text"
             class="clickable"
             value=""
@@ -467,9 +447,9 @@
             align="center"
             width="2"
             position="0 -1 0"
-            geometry="primitive:plane; height: 0.1; width: 2;"
+            geometry="primitive:plane; height: 0.1; width: 1.5;"
             material="opacity: 0.5"
-          ></a-text>
+          ></a-text> -->
           <a-sound
             id="music"
             src="#backgroundMusic"
