@@ -6,157 +6,8 @@
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
     <script type="module">
       import "aframe-extras";
-    </script>
-    <script></script>
-    <script>
-      // AFRAME.registerComponent("mytarget", {
-      //   init: function () {
-      //     const backgroundMusic = document.querySelector("#music");
-
-      //     this.el.addEventListener("targetFound", (event) => {
-      //       console.log("target found");
-      //       backgroundMusic.components.sound.playSound();
-      //       showAvatar(() => {
-      //         setTimeout(() => {
-      //           showPortfolio(() => {
-      //             setTimeout(() => {
-      //               showInfo();
-      //             }, 300);
-      //           });
-      //         }, 300);
-      //       });
-      //     });
-
-      //     this.el.addEventListener("targetLost", (event) => {
-      //       console.log("target lost");
-      //       backgroundMusic.components.sound.stopSound();
-      //     });
-      //   },
-      // });
-      const showInfo = () => {
-        const profileButton = document.querySelector("#profile-button");
-        const webButton = document.querySelector("#web-button");
-        const emailButton = document.querySelector("#email-button");
-        const locationButton = document.querySelector("#location-button");
-
-        profileButton.setAttribute("visible", true);
-        setTimeout(() => {
-          webButton.setAttribute("visible", true);
-        }, 300);
-        setTimeout(() => {
-          emailButton.setAttribute("visible", true);
-        }, 600);
-        setTimeout(() => {
-          locationButton.setAttribute("visible", true);
-        }, 900);
-
-        // Load actions immediately after revealing the buttons
-        webButton.addEventListener("click", function () {
-          window.location.href = "https://softmind.tech";
-        });
-        emailButton.addEventListener("click", function () {
-          window.location.href = "mailto:hello@softmind.tech";
-        });
-        profileButton.addEventListener("click", function () {
-          console.log("Profile selected");
-        });
-        locationButton.addEventListener("click", function () {
-          console.log("Location: Vancouver");
-        });
-      };
-
-      const showPortfolio = (done) => {
-        const portfolio = document.querySelector("#portfolio-panel");
-        const portfolioLeftButton = document.querySelector(
-          "#portfolio-left-button"
-        );
-        const portfolioRightButton = document.querySelector(
-          "#portfolio-right-button"
-        );
-        const paintandquestPreviewButton = document.querySelector(
-          "#paintandquest-preview-button"
-        );
-
-        let y = 0;
-        let currentItem = 0;
-
-        portfolio.setAttribute("visible", true);
-
-        const showPortfolioItem = (item) => {
-          for (let i = 0; i <= 2; i++) {
-            document
-              .querySelector("#portfolio-item" + i)
-              .setAttribute("visible", i === item);
-          }
-        };
-        const id = setInterval(() => {
-          y += 0.008;
-          if (y >= 0.6) {
-            clearInterval(id);
-            portfolioLeftButton.setAttribute("visible", true);
-            portfolioRightButton.setAttribute("visible", true);
-            portfolioLeftButton.addEventListener("click", () => {
-              currentItem = (currentItem + 1) % 3;
-              showPortfolioItem(currentItem);
-            });
-            portfolioRightButton.addEventListener("click", () => {
-              currentItem = (currentItem - 1 + 3) % 3;
-              showPortfolioItem(currentItem);
-            });
-
-            paintandquestPreviewButton.addEventListener("click", () => {
-              paintandquestPreviewButton.setAttribute("visible", false);
-              const testVideo = document.createElement("video");
-              const canplayWebm = testVideo.canPlayType(
-                'video/webm; codecs="vp8, vorbis"'
-              );
-              if (canplayWebm == "") {
-                document
-                  .querySelector("#paintandquest-video-link")
-                  .setAttribute("src", "#paintandquest-video-mp4");
-                document.querySelector("#paintandquest-video-mp4").play();
-              } else {
-                document
-                  .querySelector("#paintandquest-video-link")
-                  .setAttribute("src", "#paintandquest-video-webm");
-                document.querySelector("#paintandquest-video-webm").play();
-              }
-            });
-
-            setTimeout(() => {
-              done();
-            }, 500);
-          }
-          portfolio.setAttribute("position", "0 " + y + " -0.01");
-        }, 10);
-      };
-
-      const showAvatar = (onDone) => {
-        const avatar = document.querySelector("#avatar");
-        avatar.setAttribute("position", "0 -0.25 0.3"); // Directly set the final position
-        onDone(); // Immediately call the callback function
-      };
-
-      AFRAME.registerComponent("mytarget", {
-        init: function () {
-          this.el.addEventListener("targetFound", (event) => {
-            console.log("target found");
-            showAvatar(() => {
-              setTimeout(() => {
-                showPortfolio(() => {
-                  setTimeout(() => {
-                    showInfo();
-                  }, 300);
-                });
-              }, 300);
-            });
-          });
-          this.el.addEventListener("targetLost", (event) => {
-            console.log("target found");
-          });
-          //this.el.emit('targetFound');
-        },
-      });
+      // import "aframe";
+      // import "mind-ar/dist/mindar-image-aframe.prod.js";
     </script>
 
     <style>
@@ -259,10 +110,22 @@
         device-orientation-permission-ui="enabled: false"
       >
         <a-assets>
-          <img id="card" src="/src/assets/card.png" />
-          <img id="icon-web" src="/src/assets/web.svg" />
-          <img id="icon-location" src="/src/assets/instagram.svg" />
-          <img id="icon-profile" src="/src/assets/tiktok.svg" />
+          <img
+            id="card"
+            src="https://cdn.jsdelivr.net/gh/tobi-i-codes/my-vite-project@main/src/assets/card.png"
+          />
+          <img
+            id="icon-web"
+            src="https://github.com/tobi-i-codes/my-vite-project/blob/main/src/assets/web.svg"
+          />
+          <img
+            id="icon-location"
+            src="https://cdn.jsdelivr.net/gh/tobi-i-codes/my-vite-project@main/src/assets/icons/location.png"
+          />
+          <img
+            id="icon-profile"
+            src="https://cdn.jsdelivr.net/gh/tobi-i-codes/my-vite-project@main/src/assets/tiktok.svg"
+          />
           <img id="icon-phone" src="/src/assets/icons/phone.png" />
           <img id="icon-email" src="/src/assets/icons/email.png" />
           <img id="icon-play" src="/src/assets/icons/play.png" />
@@ -272,18 +135,18 @@
             id="paintandquest-preview"
             src="/src/assets//portfolio/paintandquest-preview.png"
           />
-          <video
+          <!-- <video
             id="paintandquest-video-mp4"
             autoplay="false"
             loop="true"
             src="/src/assets/portfolio/paintandquest.mp4"
-          ></video>
-          <video
+          ></video> -->
+          <!-- <video
             id="paintandquest-video-webm"
             autoplay="false"
             loop="true"
             src="/src/assets/portfolio/paintandquest.webm"
-          ></video>
+          ></video> -->
           <img
             id="coffeemachine-preview"
             src="/src/assets/portfolio/coffeemachine-preview.png"
@@ -292,9 +155,12 @@
 
           <a-asset-item
             id="avatarModel"
-            src="/animation/dance-work.gltf"
+            src="https://cdn.jsdelivr.net/gh/tobi-i-codes/my-vite-project@main/public/animation/dance-work.gltf"
           ></a-asset-item>
-          <audio id="backgroundMusic" src="/music/background-music.mp3"></audio>
+          <audio
+            id="backgroundMusic"
+            src="https://cdn.jsdelivr.net/gh/tobi-i-codes/my-vite-project@main/public/music/background-music.mp3"
+          ></audio>
         </a-assets>
 
         <a-camera
