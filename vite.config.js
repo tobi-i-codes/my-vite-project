@@ -17,6 +17,6 @@ export default defineConfig({
       cert: fs.readFileSync(path.resolve(__dirname, "localhost.pem")),
     },
     host: "0.0.0.0",
-    port: 5174, // or any port you prefer
+    port: 5179, // or any port you prefer
   },
 });
